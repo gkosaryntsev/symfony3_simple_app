@@ -1,0 +1,42 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+
+ex7-memcached:
+  image: phpdockerio/memcached:latest
+  container_name: ex7-memcached
+
+ex7-redis:
+  image: phpdockerio/redis:latest
+  container_name: ex7-redis
+
+ex7-postgres:
+  image: postgres:9.6
+  container_name: ex7-postgres
+  environment:
+    - POSTGRES_USER=root
+    - POSTGRES_PASSWORD=root
+    - POSTGRES_DB=dbname
+
+ex7-webserver:
+  image: phpdockerio/nginx:latest
+  container_name: ex7-webserver
+  volumes:
+      - ..:/var/www/ex7
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  ports:
+   - "9000:80"
+  links:
+   - ex7-php-fpm
+
+ex7-php-fpm:
+  build: .
+  dockerfile: php-fpm/Dockerfile
+  container_name: ex7-php-fpm
+  volumes:
+    - ..:/var/www/ex7
+    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+  links:
+    - ex7-memcached
+    - ex7-postgres
+    - ex7-redis
