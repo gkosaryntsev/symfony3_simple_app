@@ -1,39 +1,45 @@
-Тестовое окружение для разработки на Windows
+# РўРµСЃС‚РѕРІРѕРµ РѕРєСЂСѓР¶РµРЅРёРµ РґР»СЏ СЂР°Р·СЂР°Р±РѕС‚РєРё РЅР° Windows
 
-Устанавливаем Docker Toolbox 
+#### РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Docker Toolbox 
 https://www.docker.com/products/docker-toolbox
 
 
-Запуск на Windows:
-Папка с файлом docker-compose.yml должна находиться внутри директории пользователя (Например, C:\Users\vasya\dockerexample), потому что иначе volumes в docker не будут работать.
+## Р—Р°РїСѓСЃРє РЅР° Windows:
+РџР°РїРєР° СЃ С„Р°Р№Р»РѕРј docker-compose.yml РґРѕР»Р¶РЅР° РЅР°С…РѕРґРёС‚СЊСЃСЏ РІРЅСѓС‚СЂРё РґРёСЂРµРєС‚РѕСЂРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РќР°РїСЂРёРјРµСЂ, C:\Users\vasya\dockerexample), РїРѕС‚РѕРјСѓ С‡С‚Рѕ РёРЅР°С‡Рµ volumes РІ docker РЅРµ Р±СѓРґСѓС‚ СЂР°Р±РѕС‚Р°С‚СЊ.
 
-Открыть консоль докер
-Перейти в директорию
-cd /c/Users/vasya/dockerexample
-Запустить
-/bin/sh build.sh
+* РћС‚РєСЂС‹С‚СЊ РєРѕРЅСЃРѕР»СЊ РґРѕРєРµСЂ
+* РџРµСЂРµР№С‚Рё РІ РґРёСЂРµРєС‚РѕСЂРёСЋ
+`cd /c/Users/vasya/dockerexample`
 
-docker-compose up -d
+* Р—Р°РїСѓСЃС‚РёС‚СЊ
 
-Как открыть в браузере
-С помощью команды
-docker-machine ip
-получить IP
-и к этому IP подставить порт 9000, например:
+`/bin/sh build.sh`
+
+`docker-compose up -d`
+
+#### РљР°Рє РѕС‚РєСЂС‹С‚СЊ РІ Р±СЂР°СѓР·РµСЂРµ
+РЎ РїРѕРјРѕС‰СЊСЋ РєРѕРјР°РЅРґС‹
+`docker-machine ip`
+РїРѕР»СѓС‡РёС‚СЊ IP
+Рё Рє СЌС‚РѕРјСѓ IP РїРѕРґСЃС‚Р°РІРёС‚СЊ РїРѕСЂС‚ 9000, РЅР°РїСЂРёРјРµСЂ:
+
 http://192.168.99.100:9000/
 
-Загрузка проектов
-Заходим в контейнер с php: 
-docker exec -it ex7-php-fpm /bin/bash
+#### Р—Р°РіСЂСѓР·РєР° РїСЂРѕРµРєС‚РѕРІ
+Р—Р°С…РѕРґРёРј РІ РєРѕРЅС‚РµР№РЅРµСЂ СЃ php: 
+`docker exec -it ex7-php-fpm /bin/bash`
 
-Перейти в директорию с проектом
-cd /var/www/ex7/web
+РџРµСЂРµР№С‚Рё РІ РґРёСЂРµРєС‚РѕСЂРёСЋ СЃ РїСЂРѕРµРєС‚РѕРј
 
-composer install
+`cd /var/www/ex7/web`
 
-Инсталляция symfony:
-composer create-project symfony/framework-standard-edition my_project_name
+`composer install`
 
+#### РРЅСЃС‚Р°Р»Р»СЏС†РёСЏ symfony:
+`composer create-project symfony/framework-standard-edition my_project_name`
+
+Р’Рѕ РІСЂРµРјСЏ СѓСЃС‚Р°РЅРѕРІРєРё РїРѕРїСЂРѕСЃРёС‚ РІРІРµСЃС‚Рё РїР°СЂР°РјРµС‚СЂС‹ СЃРѕРµРґРёРЅРµРЅРёСЏ Рє Р‘Р”:
+```
 Some parameters are missing. Please provide them.
 database_host (127.0.0.1): ex7-postgres
 database_port (null): 5432
@@ -45,4 +51,4 @@ mailer_host (127.0.0.1):
 mailer_user (null):
 mailer_password (null):
 secret (ThisTokenIsNotSoSecretChangeIt): lkjsdfklsdjal;sdfdl^[[D^H^H
-
+```
