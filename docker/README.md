@@ -6,16 +6,25 @@ https://www.docker.com/products/docker-toolbox
 
 ## Запуск на Windows:
 Папка с файлом docker-compose.yml должна находиться внутри директории пользователя (Например, C:\Users\vasya\dockerexample), потому что иначе volumes в docker не будут работать.
-
 * Открыть консоль докер
+* Создаем директорию:
+```
+mkdir ~/dockerexample
+```
 * Перейти в директорию
 `cd /c/Users/vasya/dockerexample`
+или `cd ~/dockerexample`
+
+* Склонировать файлы
+
+`git clone https://github.com/gkosaryntsev/docker_php_base.git`
 
 * Запустить
 
-`/bin/sh build.sh`
-
-`docker-compose up -d`
+```
+cd docker
+docker-compose up -d
+```
 
 #### Как открыть в браузере
 С помощью команды
@@ -26,13 +35,15 @@ https://www.docker.com/products/docker-toolbox
 http://192.168.99.100:9000/
 
 #### Загрузка проектов
-Заходим в контейнер с php: 
+Заходим в контейнер с php:
+ 
 `docker exec -it ex7-php-fpm /bin/bash`
 
-Перейти в директорию с проектом
+Внутри контейнера перейти в директорию с проектом
 
 `cd /var/www/ex7/web`
 
+Если у нас уже есть какой-то проект, мы можем загрузить недостающие пакеты:
 `composer install`
 
 #### Инсталляция symfony:
