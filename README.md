@@ -36,7 +36,7 @@ http://192.168.99.100:9000/
 
 #### Загрузка проектов
 Заходим в контейнер с php:
- 
+
 `docker exec -it ex7-php-fpm /bin/bash`
 
 Внутри контейнера перейти в директорию с проектом
@@ -61,5 +61,20 @@ mailer_transport (smtp):
 mailer_host (127.0.0.1):
 mailer_user (null):
 mailer_password (null):
-secret (ThisTokenIsNotSoSecretChangeIt): lkjsdfklsdjal;sdfdl^[[D^H^H
+secret (ThisTokenIsNotSoSecretChangeIt): lkjsdfklsdjal
+```
+См. эти настройки в файле app/config/parameters.yml
+
+#### Logs
+`docker logs ex7-php-fpm`
+
+
+#### Работа с БД
+```
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+ 
+php bin/console doctrine:generate:entities AppBundle/Entity/Product
+
+php bin/console doctrine:schema:update --force
 ```

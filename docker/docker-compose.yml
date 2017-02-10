@@ -17,6 +17,8 @@ ex7-postgres:
     - POSTGRES_USER=root
     - POSTGRES_PASSWORD=root
     - POSTGRES_DB=dbname
+  ports:
+   - "5432:5432"
 
 ex7-webserver:
   image: phpdockerio/nginx:latest
